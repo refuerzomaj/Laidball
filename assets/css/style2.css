@@ -1,0 +1,23 @@
+.contact-1 .form-control{
+    color:gray!important;
+}
+.login-box, .signup-box{
+    margin: 20px auto;
+    padding: 50px;
+    border: #8f8f8f 1px solid;
+    width: 50%;
+}
+.login-text,.login-link, .signup-text, .signup-link {
+    color: #535353;
+    text-align: center;
+    margin: 0;
+}
+.login-link a, .signup-link a{
+    color:green;
+}
+.transaction-box{
+    margin: 20px auto;
+    padding: 50px;
+    border: #8f8f8f 1px solid;
+    width: 70%;
+}
