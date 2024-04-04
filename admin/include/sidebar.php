@@ -70,13 +70,12 @@ $res1=mysqli_fetch_array($query);
                             <i class="material-icons">home</i>
                             <span>View Users</span>
                         </a>
-                        <ul class="ml-menu">
-                          
-                            <li>
-                                <a href="logout.php">Sign Up</a>
-                            </li>
-                           
-                        </ul>
+                    </li>
+                    <li>
+                        <a href="#view_transactions.php" class=" nav-link" data-page="view_transactions.php">
+                            <i class="material-icons">home</i>
+                            <span>Transactions</span>
+                        </a>
                     </li>
 									                    
                     

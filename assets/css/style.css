@@ -5046,6 +5046,7 @@ table {
     color: #777;
     max-width: 100%;
     outline: none;
+    cursor: pointer;
 }
 
 .cart-total-box {

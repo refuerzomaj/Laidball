@@ -1,3 +1,8 @@
+<?php 
+if(isset($_POST['submitNewsletter'])){
+    echo "<script>alert('Please enter correct email or password!');</script>";
+}
+?>
 <footer class="footer">
     <div class="container footer-inner">
         <div class="row">
@@ -55,7 +60,7 @@
                     <div class="Subscribe-box">
                         <p>If you have inquiries regarding any properties on this page, 
 						please send me a private message on Facebook or contact me through my cellphone numbers. Thank you!</p>
-                        <form action="#" method="GET">
+                        <form method="POST" enctype="multipart/form-data" >
                             <p>
                                 <input type="text" class="form-contact" name="email" placeholder="Enter Address">
                             </p>

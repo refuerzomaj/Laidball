@@ -5,6 +5,12 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 extract($_REQUEST);
 include('include/config.php');
+function updateTransactionStatus($transactionId) {
+    include('include/config.php');
+    $query ="UPDATE transaction SET fee_status = 1 WHERE id = $transactionId";
+    mysqli_query($con,$query);
+}
+
 ?>
 <div class="content-area-7">
     <div class="container">
@@ -19,6 +25,7 @@ include('include/config.php');
                 <?php
                 $query=mysqli_query($con,"SELECT * FROM transaction WHERE user_id = '" . $_SESSION['id'] ."'");
                 $result = mysqli_fetch_array($query);
+                $transactionId = $result['id'];
                 ?>
                 <p>Date Reserve: <?php echo $result['date']; ?></p>
                 <p>Property Name: <?php echo $result['property']; ?></p>
@@ -46,6 +53,10 @@ include('include/config.php');
 
 <script src="https://www.paypal.com/sdk/js?client-id=ASnDR4rfgH2JfYKvnK6ti3l2Af1ji9rgWP-6k1zFJFgX7mgc0tHf_zJpJM2Ud0vsmCPviF_JGJ_kgdwC&currency=PHP"></script>
 <script>
+    function updateDatabase() {
+        console.log("<?php echo updateTransactionStatus($transactionId);?>");
+        window.location.href = "http://localhost/real/account.php"; 
+    }
     paypal.Buttons({
 			createOrder: (data, actions)=> {
 				return actions.order.create({
@@ -60,12 +71,7 @@ include('include/config.php');
 				return actions.order.capture().then(function(orderData){
 					console.log('capture result',orderData,JSON.stringify(orderData,null,2));
 					const transaction = orderData.purchase_units[0].payments.captures[0];
-					alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-
-					//Trigger submit button
-					// Assuming you have a button element with the ID "myButton"
-					showBtn();
-					triggerSubmitBtn();
+                    updateDatabase();
 				});
 			}
 		}).render('#paypal-button-container');

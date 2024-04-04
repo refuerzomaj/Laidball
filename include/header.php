@@ -57,7 +57,7 @@ End Google Tag Manager (noscript)
                             </li>
                             <?php if(isset($_SESSION['login'])){   ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="include/account.php">My Account</a>
+                                <a class="nav-link" href="account.php">My Account</a>
                             </li>	
                             <?php }else{   ?>	
                             <li class="nav-item">

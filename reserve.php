@@ -2,23 +2,32 @@
 include('include/header.php');
 include('include/config.php');
 $url = "";
-$delay = 5;
-if(isset($_POST['submit'])){
-    if(isset($_SESSION['login'])){
-        $url = "http://localhost/real/login.php";
-        $id = $_SESSION['id'];
-        $email = $_POST['email'];
-        $phone= $_POST['phone'];
-        $date= $_POST['date'];
-        $property = $_POST['property'];
-        $sql=mysqli_query($con,"insert into transaction(date,user_id,property,phone,fee_status,fee,transaction_status) values('$date','$id','$property','$phone',0,500, 0)");
-        //echo "<script>alert('You are successfully register');</script>";
-        $url = "http://localhost/real/transaction.php";
-        echo '<meta http-equiv="refresh" content="' . $delay . ';url=' . $url . '">';
+$delay = 0;
+if( isset($_POST['submit'])  ){
+    if(isset($_POST['date']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['property']) && isset($_POST['checkbox'])){
+        if(isset($_SESSION['login'])){
+            $url = "http://localhost/real/login.php";
+            $id = $_SESSION['id'];
+            $email = $_POST['email'];
+            $phone= $_POST['phone'];
+            $date= $_POST['date'];
+            $property = $_POST['property'];
+            $sql=mysqli_query($con,"insert into transaction(date,user_id,property,phone,fee_status,fee,transaction_status) values('$date','$id','$property','$phone',0,500, 0)");
+            //echo "<script>alert('You are successfully register');</script>";
+            echo "<script>alert('You are redirect to payment form!');</script>";
+            $url = "http://localhost/real/transaction.php";
+            echo '<meta http-equiv="refresh" content="' . $delay . ';url=' . $url . '">';
+            exit();
+        }else{
+            echo "<script>alert('You need to login first!');</script>";
+            $url = "http://localhost/real/login.php";
+            echo '<meta http-equiv="refresh" content="' . $delay . ';url=' . $url . '">';
+            exit();
+        }
     }else{
-        $url = "http://localhost/real/login.php";
-        echo '<meta http-equiv="refresh" content="' . $delay . ';url=' . $url . '">';
+        echo "<script>alert('All fields are required!');</script>";
     }
+    
 }
 ?>
 <!-- main header end -->
@@ -145,7 +154,7 @@ if(isset($_POST['submit'])){
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                            <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Reserve Now">
+                            <button type="submit" name="submit" id="submit" class="btn btn-primary">Reserve Now</button>
                         </div>
                         
                     </div>

@@ -21,3 +21,6 @@
     border: #8f8f8f 1px solid;
     width: 70%;
 }
+input#firstname, input#lastname{
+    cursor: pointer;
+}

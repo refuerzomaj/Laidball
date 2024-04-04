@@ -1,8 +1,8 @@
 <?php 
 include('include/header.php');
-include'include/config.php';
-extract($_REQUEST);
 
+extract($_REQUEST);
+include'include/config.php';
 $id=$_REQUEST['id'];
 
 $query=mysqli_query($con,"select * from property where id='$id'");

@@ -46,13 +46,9 @@
                                     <thead>
                                        <tr>
                                             <th>S.no</th>
-                                            <th>Name</th>
-                                            <th>Contact Number</th>
+                                            <th>Firstname</th>
+                                            <th>Lastname</th>
                                             <th>Email Address</th>
-                                            <th>Description</th>
-                                            <th>Date</th>
-                                            <th>Reservation Fee</th>
-                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -60,13 +56,9 @@
 
                                         <tr>
                                             <th>S.no</th>
-                                            <th>Name</th>
-                                            <th>Contact Number</th>
+                                            <th>Firstname</th>
+                                            <th>Lastname</th>
                                             <th>Email Address</th>
-                                            <th>Description</th>
-                                            <th>Date</th>
-                                            <th>Reservation Fee</th>
-                                            <th>Status</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -77,7 +69,7 @@ include'include/config.php';
 
 
 // Select specific data from the first table
-$query1 = mysqli_query($con,"SELECT `transaction`.*, users.*, property.* FROM transaction JOIN users ON transaction.user_id = users.id JOIN property ON transaction.property = property.title");
+$query1 = mysqli_query($con,"SELECT * FROM users");
 while($result1 = mysqli_fetch_array($query1)){
 
 
@@ -85,30 +77,10 @@ while($result1 = mysqli_fetch_array($query1)){
 
                                         <tr>
                                             <td><?php echo $i++; ?></td>
-                                            <td><?php echo $result1['fname'] . " " . $result1['lname'] ;?></td>
-                                            <td><?php echo $result1['phone'];?></td>
+                                            <td><?php echo $result1['fname']; ?></td>
+                                            <td><?php echo $result1['lname'] ;?></td>
                                             <td><?php echo $result1['email'];?></td>
-                                            <td><?php echo $result1['description'];?></td>
-                                            <td><?php echo $result1['date'];?></td>
-                                            <td><?php echo $result1['fee'];?></td>
-                                            <td>
-                                                <?php 
-                                                if($result1['transaction_status']==0){
-                                                    echo 'Pending';
-                                                }
-                                                else if($result1['transaction_status']==1){
-                                                    echo 'Done';
-                                                }
-                                                else if($result1['transaction_status']==2){
-                                                    echo 'Cancelled';
-                                                }
-                                                ?>
-                                            </td>
-                                            <td><img src="images/property_image/<?php echo $result1['image'];?>" width="120"></td>
-                                             <td>
-    <a class='btn btn-info'   href="update_property.php?&id=<?php echo $id;?>"><span class="glyphicon glyphicon-pencil"></span></a>
-    <a class='btn btn-danger' onclick="delet(<?php echo $id;?>);" ><span class="glyphicon glyphicon-remove" style="color:white;"></span></a>
-
+   
    <!-- <a class='btn btn-success' href="dashboard.php?page=c_info&id=<?php echo $id;?>"><span class="fa fa-eye"></span></a>-->
   
     </td>

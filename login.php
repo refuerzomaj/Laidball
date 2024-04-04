@@ -32,14 +32,14 @@ if(isset($_POST['submit'])){
     <div class="container">
         <div class="login-box">
             <h1>Login</h1>
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" autocomplete="off">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password" autocomplete="off" required>
                 </div>
                 <div class="form-group">
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>

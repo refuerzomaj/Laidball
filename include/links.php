@@ -1,5 +1,5 @@
 <!-- External CSS libraries -->
-<link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="assets/css/magnific-popup.css">
     <link type="text/css" rel="stylesheet" href="assets/css/jquery.selectBox.css">
     <link type="text/css" rel="stylesheet" href="assets/css/dropzone.css">
