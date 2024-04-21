@@ -48,7 +48,6 @@ if(isset($_POST['submit'])){
                 <p class="login-link"><a href="signup.php">Sign Up</a></p>
             </form>
         </div>
-        
     </div>
 </div>
 

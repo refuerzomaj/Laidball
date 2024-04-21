@@ -24,8 +24,18 @@ if(isset($_POST['cancel'])){
     echo '<meta http-equiv="refresh" content="' . $delay . ';url=' . $url . '">';
     exit();
 }
-
 ?>
+<script type="text/javascript">
+function cancel(id)
+  {
+    if(confirm("Do you want to cancel your reservation ?"))
+    {
+      window.location.href='delete_transaction.php?x='+id;
+    }
+  }
+</script>
+
+
 <div class="sub-banner overview-bgi">
     <div class="container">
         <div class="breadcrumb-area">
@@ -61,7 +71,7 @@ include'include/config.php';
 
 
 // Select specific data from the first table
-$query1 = mysqli_query($con,"SELECT `transaction`.*, users.*, property.* FROM transaction JOIN users ON transaction.user_id = users.id JOIN property ON transaction.property = property.title WHERE transaction.user_id = $userId ");
+$query1 = mysqli_query($con,"SELECT `transaction`.*, property.title, property.image FROM transaction JOIN users ON transaction.user_id = users.id JOIN property ON transaction.property = property.title WHERE transaction.user_id = $userId AND transaction.fee_status = 1 ORDER BY transaction.id DESC");
 while($result1 = mysqli_fetch_array($query1)){
 
 
@@ -86,9 +96,8 @@ while($result1 = mysqli_fetch_array($query1)){
                                                 ?>
                                             </td>
                                             <td>
-                                                <form method="post" enctype="multipart/form-data">
-                                                    <button type="submit" name="cancel" class="btn btn-primary">Cancel</button>
-                                                </form>
+                                                    <button type="submit" name="cancel" class="btn btn-primary" onclick="cancel(<?php echo $result1['id'];?>);" >Cancel <span class="glyphicon glyphicon-remove" style="color:white;"></span></button>
+                                               
                                             </td>
                                         </tr>
 <?php 

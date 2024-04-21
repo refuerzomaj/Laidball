@@ -23,7 +23,7 @@ function updateTransactionStatus($transactionId) {
                 <h1>Summary</h1>
                 <hr>
                 <?php
-                $query=mysqli_query($con,"SELECT * FROM transaction WHERE user_id = '" . $_SESSION['id'] ."'");
+                $query=mysqli_query($con,"SELECT * FROM transaction WHERE user_id = '" . $_SESSION['id'] ."' ORDER BY id DESC");
                 $result = mysqli_fetch_array($query);
                 $transactionId = $result['id'];
                 ?>
